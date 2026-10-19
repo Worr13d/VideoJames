@@ -21,6 +21,9 @@ public class BedScript : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// when this object is triggered, it will switch the time of day from day to night or night to day
+    /// </summary>
     private void OnTriggerEnter()
     {
         switch (timeOfDay)
