@@ -4,13 +4,24 @@ public class CropScript : MonoBehaviour
 {
     private enum cropState
     {
-        dirt,
         planted,
+        sprouted,
         growing,
+        growinger,
+        grown
     }
-    //value of the crop
+    
+    //values of the crop
     [SerializeField] private int value;
-    [SerializeField] private int poo;
+    private cropState state;
+    [SerializeField]public Crops type;
+
+
+    //sprite vars
+    private string cropSpritePath = "Assets/Sprites/objects&items/plants free.png";
+    private Sprite[] sprites;
+
+    //singleton
     DayNightSingleton instance;
 
 
@@ -18,6 +29,7 @@ public class CropScript : MonoBehaviour
     void Start()
     {
         instance = DayNightSingleton.instance;
+        sprites = Resources.LoadAll<Sprite>(cropSpritePath);
     }
 
     // Update is called once per frame

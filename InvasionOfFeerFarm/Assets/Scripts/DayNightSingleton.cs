@@ -1,9 +1,19 @@
 using UnityEngine;
-
+public enum Crops
+{
+    pumpkin,
+    potato,
+    carrot,
+    tomato,
+    bean
+}
 public class DayNightSingleton : MonoBehaviour
 {
+    
+
     public static DayNightSingleton instance;
     public bool isDay = true; //true for day, false for night
+    public Crops currentCrop;
     private DayNightSingleton()
     {
         //initialize boolean and variables here
