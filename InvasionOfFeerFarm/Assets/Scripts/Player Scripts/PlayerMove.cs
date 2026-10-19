@@ -1,0 +1,44 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerMove : MonoBehaviour
+{
+    [SerializeField] private float speed;
+    [SerializeField] private Rigidbody2D rb;
+    private Vector2 direction;
+    private Vector2 velocity;
+    private Vector2 position;
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
+        Vector2 direction = new Vector2(mouseWorldPosition.x - transform.position.x, mouseWorldPosition.y - transform.position.y);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+    }
+
+    private void FixedUpdate()
+    {
+        velocity = direction.normalized * speed;
+        position = rb.position + velocity * Time.fixedDeltaTime;
+        rb.MovePosition(position);
+
+
+    }
+
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        direction = ctx.ReadValue<Vector2>();
+    }
+}
