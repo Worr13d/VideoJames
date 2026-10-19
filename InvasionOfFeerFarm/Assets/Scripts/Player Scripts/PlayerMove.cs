@@ -19,10 +19,10 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
-        Vector2 direction = new Vector2(mouseWorldPosition.x - transform.position.x, mouseWorldPosition.y - transform.position.y);
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //handles rotation
+        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
+        Vector2 direction2 = new Vector2(mouseWorldPosition.x - transform.position.x, mouseWorldPosition.y - transform.position.y);
+        float angle = Mathf.Atan2(direction2.y, direction2.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
@@ -30,6 +30,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //basic movement
         velocity = direction.normalized * speed;
         position = rb.position + velocity * Time.fixedDeltaTime;
         rb.MovePosition(position);
