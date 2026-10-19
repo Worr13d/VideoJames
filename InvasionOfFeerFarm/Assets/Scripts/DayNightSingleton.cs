@@ -3,7 +3,7 @@ using UnityEngine;
 public class DayNightSingleton : MonoBehaviour
 {
     public static DayNightSingleton instance;
-
+    public bool isDay = true; //true for day, false for night
     private DayNightSingleton()
     {
         //initialize boolean and variables here
@@ -23,6 +23,8 @@ public class DayNightSingleton : MonoBehaviour
             Destroy(gameObject);  // Destroy duplicate
         }
     }
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
