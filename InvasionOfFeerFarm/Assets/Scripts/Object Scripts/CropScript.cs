@@ -37,7 +37,7 @@ public class CropScript : MonoBehaviour
         cropRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         //loads all the sprites
-        spriteSheet = Resources.LoadAll<Sprite>(cropSpritePath);
+        spriteSheet = (Sprite[])Resources.LoadAll(cropSpritePath, typeof(Sprite));
 
         sprites = new Sprite[5];
 
@@ -88,7 +88,7 @@ public class CropScript : MonoBehaviour
         switch (state)
         {
             case CropState.planted:
-                cropRenderer.sprite = sprites[0];
+                cropRenderer.sprite = spriteSheet[0];
                 break;
             case CropState.sprouted:
                 cropRenderer.sprite = sprites[1];
