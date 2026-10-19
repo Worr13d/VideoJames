@@ -1,38 +1,42 @@
 using TMPro;
 using UnityEngine;
+public enum TimeOfDay
+{
+    Day,
+    Night
+}
 
 public class DayNightText : MonoBehaviour
 {
-    enum DayNightState
-    {
-        Day,
-        Night
-    }
+   
+ 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private DayNightState timeOfDay;
+    public bool isDay;
+
+    public bool IsDay
+    {
+        get { return isDay; }
+        set { isDay = value; }
+    }
 
     [SerializeField] private TextMeshProUGUI text;
 
     void Start()
     {
-        timeOfDay = DayNightState.Day;
+        isDay = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (timeOfDay)
+       if (isDay)
         {
-            case(DayNightState.Day):
-                text.text = "Day";
-                break;
-
-            case(DayNightState.Night):
-                text.text = "Night";
-                break;
-            default:
-                break;
-
+            text.text = "Day";
+        }
+        else
+        {
+            text.text = "Night";
         }
     }
+    
 }
