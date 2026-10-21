@@ -20,7 +20,7 @@ public class CropScript : MonoBehaviour
 
 
     //sprite vars
-    private string cropSpritePath = "Assets/Sprites/objects&items/plants free.png";
+    private string cropSpritePath = "Sprites/objects&items/plantsFree";
     private Sprite[] spriteSheet;
     private Sprite[] sprites;
 
@@ -37,46 +37,12 @@ public class CropScript : MonoBehaviour
         cropRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         //loads all the sprites
-        spriteSheet = (Sprite[])Resources.LoadAll(cropSpritePath, typeof(Sprite));
+        spriteSheet = Resources.LoadAll<Sprite>(cropSpritePath);
 
         sprites = new Sprite[5];
 
-        //locks in which sprites are relevant
-        switch (type)
-        {
-            case Crops.pumpkin:
-                for(int i = 0; i > 5; i++)
-                {
-                    sprites[i] = spriteSheet[i];
-                }
-                break;
-            case Crops.potato:
-                for (int i = 5; i > 10; i++)
-                {
-                    sprites[i - 5] = spriteSheet[i];
-                }
-                break;
-            case Crops.carrot:
-                for (int i = 10; i > 15; i++)
-                {
-                    sprites[i - 10] = spriteSheet[i];
-                }
-                break;
-            case Crops.tomato:
-                for (int i = 15; i > 20; i++)
-                {
-                    sprites[i - 15] = spriteSheet[i];
-                }
-                break;
-            case Crops.bean:
-                for (int i = 20; i > 25; i++)
-                {
-                    sprites[i - 20] = spriteSheet[i];
-                }
-                break;
-            default:
-                break;
-        }
+        
+        
 
         
     }
@@ -84,6 +50,49 @@ public class CropScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //locks in which sprites are relevant
+        //handles the value based on crop type
+        switch (type)
+        {
+            case Crops.pumpkin:
+                for (int i = 0; i < 5; i++)
+                {
+                    sprites[i] = spriteSheet[i];
+                }
+                value = 20;
+                break;
+            case Crops.potato:
+                for (int i = 5; i < 10; i++)
+                {
+                    sprites[i - 5] = spriteSheet[i];
+                }
+                value = 6;
+                break;
+            case Crops.carrot:
+                for (int i = 10; i < 15; i++)
+                {
+                    sprites[i - 10] = spriteSheet[i];
+                }
+                value = 8;
+                break;
+            case Crops.tomato:
+                for (int i = 15; i < 20; i++)
+                {
+                    sprites[i - 15] = spriteSheet[i];
+                }
+                value = 12;
+                break;
+            case Crops.bean:
+                for (int i = 20; i < 25; i++)
+                {
+                    sprites[i - 20] = spriteSheet[i];
+                }
+                value = 10;
+                break;
+            default:
+                break;
+        }
+
         //switches the sprites
         switch (state)
         {
