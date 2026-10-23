@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerDayNightCycle : MonoBehaviour
+public class Player : Entity
 {
-
     private DayNightSingleton instance;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] Sprite[] costumes;
@@ -12,7 +13,6 @@ public class PlayerDayNightCycle : MonoBehaviour
     {
         instance = DayNightSingleton.instance;
     }
-    // pumpkin potato tomato bean
 
     // Update is called once per frame
     void Update()
@@ -36,5 +36,33 @@ public class PlayerDayNightCycle : MonoBehaviour
         spriteRenderer.sprite = costumes[index];
     }
 
+    public void OnAttack(InputAction.CallbackContext ctx)
+    {
+        Console.WriteLine("attack");
+        if (!instance.isDay)
+        {
+            Shoot();
+            Console.WriteLine("shot>");
+        }
+        else
+        {
+            Harvest();
+        }
+    }
 
+    /// <summary>
+    /// Activates when clicked during the nighttime - Shoots gun
+    /// </summary>
+    protected override void Shoot()
+    {
+        Console.WriteLine("shoot!");
+    }
+
+    /// <summary>
+    /// Activates when clicked during the daytime - Greg do your shit twin
+    /// </summary>
+    protected void Harvest()
+    {
+        Console.WriteLine("harvest!");
+    }
 }
