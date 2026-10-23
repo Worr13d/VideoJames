@@ -106,7 +106,7 @@ public class Player : Entity
     /// </summary>
     protected override void Shoot()
     {
-        GameObject newInstance = Instantiate(bullet, transform.position, transform.rotation);
+        GameObject newInstance = Instantiate(bullet, transform.position + transform.right, transform.rotation);
     }
 
     /// <summary>
@@ -114,6 +114,6 @@ public class Player : Entity
     /// </summary>
     protected void Harvest()
     {
-        Console.WriteLine("harvest!");
+        Console.WriteLine("harvest!");  
     }
 }
