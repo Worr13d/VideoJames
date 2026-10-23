@@ -27,6 +27,15 @@ public class CropScript : MonoBehaviour
     //singleton
     DayNightSingleton instance;
 
+    //accessor for value
+    /// <summary>
+    /// The value of the crop
+    /// </summary>
+    public int Value
+    {
+        get { return value; }
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,11 +49,6 @@ public class CropScript : MonoBehaviour
         spriteSheet = Resources.LoadAll<Sprite>(cropSpritePath);
 
         sprites = new Sprite[5];
-
-        
-        
-
-        
     }
 
     // Update is called once per frame
@@ -115,4 +119,5 @@ public class CropScript : MonoBehaviour
                 break;
         }
     }
+
 }
