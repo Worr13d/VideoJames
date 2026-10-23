@@ -24,6 +24,9 @@ public class BedScript : MonoBehaviour
     /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.name == "player1")
+        {
         //changes it to night
         if (instance.isDay)
         {
@@ -35,8 +38,10 @@ public class BedScript : MonoBehaviour
             instance.isDay = true;
             instance.newDay.Invoke();
         }
+        }
+
     }
 
-    
-    
+
+
 }
