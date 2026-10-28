@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   health: 3
-  speed: 5
+  speed: 6
   canShoot: 1
   spriteRenderer: {fileID: 4830875599946381920}
   costumes:

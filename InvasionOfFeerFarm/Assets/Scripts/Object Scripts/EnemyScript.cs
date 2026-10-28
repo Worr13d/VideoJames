@@ -1,5 +1,7 @@
+using System.IO;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemyScript : Entity
 {
@@ -18,6 +20,22 @@ public class EnemyScript : Entity
     private GameObject player;
     private float viewRange;
     private float timer;
+    [SerializeField] private Rigidbody2D rb;
+    private bool hasSeenPlayer;
+
+    protected Vector3 velocity;
+    protected Vector3 acceleration;
+    protected Vector3 steeringForce;
+    private Vector3 randomTarget;
+    private float fleeWeight = .5f;
+    private float seekWeight = 1f;
+
+    [SerializeField] private GameObject laser1;
+    [SerializeField] private GameObject laser2;
+    [SerializeField] private GameObject laser3;
+
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +43,8 @@ public class EnemyScript : Entity
         player = GameObject.Find("playerTest");
         instance = DayNightSingleton.instance;
         health = Random.Range(3, 7);
+        hasSeenPlayer = false;
+        randomTarget = (new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10), 0));
         switch (Random.Range(1, 5))
         {
             case 1:
@@ -35,7 +55,7 @@ public class EnemyScript : Entity
             case 2:
                 type = EnemyTypes.dualGunner; 
                 ChangeSprite(2);
-                viewRange = 4.5f + Random.Range(-1, 2);
+                viewRange = 5f + Random.Range(-1, 2);
                 break;
             case 3: 
                 type = EnemyTypes.charger; 
@@ -67,6 +87,9 @@ public class EnemyScript : Entity
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
+            hasSeenPlayer = true;
+            seekWeight = 1f;
+
             if (type == EnemyTypes.gunner)
             {
                 if (timer > 3f)
@@ -93,33 +116,143 @@ public class EnemyScript : Entity
             }
         }
 
-        // movement
-        if (Vector3.Distance(transform.position, player.transform.position) < viewRange)
-        {
-            // flee if gun seek if gunless
+
+    }
+
+    private void FixedUpdate()
+    {
+        acceleration = Vector3.zero;
+
+        steeringForce = CalcSteering();
+        acceleration += steeringForce;
+
+        Vector3 nextPosition = transform.position;
+
+        velocity += acceleration * Time.fixedDeltaTime;
+        velocity = Vector3.ClampMagnitude(velocity, speed);
+
+        nextPosition += velocity * Time.fixedDeltaTime;
+
+        rb.MovePosition(nextPosition);
+
+    }
+
+    protected  Vector3 CalcSteering()
+    {
+        Vector3 totalForce = Vector3.zero;
+
+        //totalForce += Seek(target) * seekWeight;
+         if (Vector3.Distance(transform.position, player.transform.position) < viewRange-1)
+         {
+            if (type == EnemyTypes.charger)
+            {
+                totalForce += Seek() * seekWeight * 2;
+            }
+            else
+            {
+                totalForce += Flee() * fleeWeight;
+            }
+
         }
         else
         {
-            // pick random direction and wonder
+            // wonder
         }
+
+         if (hasSeenPlayer && Vector3.Distance(transform.position, player.transform.position) > viewRange)
+         {
+            totalForce += Seek() * seekWeight;
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+         }
+         if (!hasSeenPlayer)
+         {
+            seekWeight = 0.02f;
+            Vector3 direction = (randomTarget - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            totalForce += Seek(randomTarget) * seekWeight;
+
+        }
+
+        //totalForce += Evade(evadeTarget, lookAheadSeconds) * evadeWeight;
+        //totalForce += StayInBounds() * stayInBoundsWeight;
+
+        return totalForce;
     }
-    
-    /// <summary>
-    /// switch sprite to costume index
-    /// </summary>
-    /// <param name="index"></param>
-     void ChangeSprite(int index)
+
+
+        /// <summary>
+        /// switch sprite to costume index
+        /// </summary>
+        /// <param name="index"></param>
+        void ChangeSprite(int index)
      {
         spriteRenderer.sprite = sprites[index];
 
      }
 
     /// <summary>
+    /// flees DEFAULT FLEES PLAYER - if you want to flee something else, make an override with a param
+    /// </summary>
+    /// <returns></returns>
+    protected Vector3 Flee()
+    {
+        Vector3 desiredVelocity = transform.position - player.transform.position;
+        desiredVelocity = desiredVelocity.normalized * speed;
+        return desiredVelocity - velocity;
+    }
+
+
+    /// <summary>
+    /// Seeks DEFAULT SEEKS PLAYER - if you want to seek something else, make an override with a param
+    /// </summary>
+    /// <returns></returns>
+    protected Vector3 Seek()
+    {
+        Vector3 desiredVelocity = player.transform.position - transform.position;
+        desiredVelocity = desiredVelocity.normalized * speed;
+        return desiredVelocity - velocity;
+    }
+
+    /// <summary>
+    /// override for specific targets other than player
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    protected Vector3 Seek(Vector3 target)
+    {
+        Vector3 desiredVelocity = target - transform.position;
+        desiredVelocity = desiredVelocity.normalized * speed;
+        return desiredVelocity - velocity;
+    }
+
+
+
+    /// <summary>
     /// shoot
     /// </summary>
     protected override void Shoot()
     {
-        print("ballsack micah laney");
+        if (type == EnemyTypes.gunner)
+        {
+            GameObject newInstance = Instantiate(laser1, transform.position + transform.right, transform.rotation);
+        }
+        else if (type == EnemyTypes.dualGunner)
+        {
+            GameObject newInstance = Instantiate(laser2, transform.position + transform.right, transform.rotation);
+        }
+        else if (type == EnemyTypes.cannoneer)
+        {
+            GameObject newInstance = Instantiate(laser3, transform.position + transform.right, transform.rotation);
+        }
+        else
+        { 
+            print("ballsack micah laney");
+        }
+        
     }
 
     /// <summary>
@@ -135,6 +268,7 @@ public class EnemyScript : Entity
             {
                 instance.enemiesRemaining--;
                 Destroy(gameObject);
+                Destroy(collision);
             }
         }
     }
