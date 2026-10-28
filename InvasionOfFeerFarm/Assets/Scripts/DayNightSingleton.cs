@@ -14,11 +14,16 @@ public class DayNightSingleton : MonoBehaviour
 
     public static DayNightSingleton instance;
     public bool isDay = true; //true for day, false for night
+    public int enemiesRemaining;
     public Crops currentCrop;
     public UnityEvent newDay = new UnityEvent();
+    public UnityEvent newNight = new UnityEvent();
+    public int cycles;
     private DayNightSingleton()
     {
         //initialize boolean and variables here
+        enemiesRemaining = 0;
+        cycles = 0;
 
     }
 

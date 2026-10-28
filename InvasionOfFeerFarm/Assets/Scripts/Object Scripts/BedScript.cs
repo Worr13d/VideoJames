@@ -31,13 +31,18 @@ public class BedScript : MonoBehaviour
         if (instance.isDay)
         {
            instance.isDay = false;
+           instance.newNight.Invoke();
         }
         //changes it to day
         else
         {
-            instance.isDay = true;
-            instance.newDay.Invoke();
-        }
+            if (instance.enemiesRemaining == 0)
+                {
+                    instance.isDay = true;
+                    instance.newDay.Invoke();
+                    instance.cycles++;
+                }
+            }
         }
 
     }

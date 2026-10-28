@@ -32,6 +32,8 @@ public class EnemyScript : Entity
                 break;
 
         }
+
+
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class EnemyScript : Entity
         spriteRenderer.sprite = sprites[index];
 
      }
-    protected  override void Shoot()
+    protected override void Shoot()
     {
         print("ballsack micah laney");
     }
