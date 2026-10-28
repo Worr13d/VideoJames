@@ -13,17 +13,32 @@ public class DayNightSingleton : MonoBehaviour
     
 
     public static DayNightSingleton instance;
+    public UnityEvent plantOrHarvest = new UnityEvent();
+    public UnityEvent water = new UnityEvent();
+
     public bool isDay = true; //true for day, false for night
     public int enemiesRemaining;
     public Crops currentCrop;
     public UnityEvent newDay = new UnityEvent();
     public UnityEvent newNight = new UnityEvent();
+
+    //all money currently held by the player
+    public int wallet;
+
+    //all the seeds currently held by the player
+    public int pumpkinSeeds;
+    public int potatoSeeds;
+    public int carrotSeeds;
+    public int tomatoSeeds;
+    public int beans;
+
     public int cycles;
     private DayNightSingleton()
     {
         //initialize boolean and variables here
         enemiesRemaining = 0;
         cycles = 0;
+        currentCrop = Crops.pumpkin;
 
     }
 

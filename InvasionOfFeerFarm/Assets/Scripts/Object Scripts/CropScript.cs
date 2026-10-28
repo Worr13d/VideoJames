@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CropScript : MonoBehaviour
 {
-    private enum CropState
+    public enum CropState
     {
         planted,
         sprouted,
@@ -36,6 +36,8 @@ public class CropScript : MonoBehaviour
         get { return value; }
     }
 
+    public CropState State { get { return state; } }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,6 +51,8 @@ public class CropScript : MonoBehaviour
         spriteSheet = Resources.LoadAll<Sprite>(cropSpritePath);
 
         sprites = new Sprite[5];
+
+        type = instance.currentCrop;
     }
 
     // Update is called once per frame

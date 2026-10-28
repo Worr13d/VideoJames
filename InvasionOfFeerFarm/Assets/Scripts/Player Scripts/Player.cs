@@ -88,17 +88,24 @@ public class Player : Entity
     public void OnAttack(InputAction.CallbackContext ctx)
     {
         if (cooldownTimer <= 0)
-        { 
-        if (!instance.isDay)
         {
-            Shoot();
-        }
-        else
-        {
-            Harvest();
-        }
+            if (!instance.isDay)
+            {
+                Shoot();
+            }
+            else
+            {
+                Harvest();
+            }
             cooldownTimer = attackCooldown;
         }
+    }
+
+    public void OnInteract(InputAction.CallbackContext ctx)
+    {
+        print("Interacting");
+        instance.water.Invoke();
+
     }
 
     /// <summary>
@@ -114,6 +121,8 @@ public class Player : Entity
     /// </summary>
     protected void Harvest()
     {
-        Console.WriteLine("harvest!");  
+        instance.plantOrHarvest.Invoke();
+        print("harvesting");
+        
     }
 }

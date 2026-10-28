@@ -13,6 +13,9 @@ public class CropPlotScript : MonoBehaviour
     [SerializeField] private Sprite unwatered;
     [SerializeField] private Sprite watered;
     private SpriteRenderer bigRender;
+    public bool isFilled;
+
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,7 +44,7 @@ public class CropPlotScript : MonoBehaviour
     }
 
     /// <summary>
-    /// called through a getcomponent in onshoot of the player class during the day when watering can is selected (boolean button)
+    /// called through a getcomponent in onshoot of the player class during the day when interacting
     /// </summary>
     public void SwitchWatered()
     {
