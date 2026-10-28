@@ -17,6 +17,7 @@ public class EnemyScript : Entity
     [SerializeField] Sprite[] sprites;
     private GameObject player;
     private float viewRange;
+    private float timer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,32 +59,73 @@ public class EnemyScript : Entity
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        // rotation and shooting
         if (Vector3.Distance(transform.position,player.transform.position) < viewRange)
         {
-            // 1. Get the direction vector from this object to the target
             Vector2 direction = (player.transform.position - transform.position).normalized;
-
-            // 2. Calculate the angle in radians, then convert to degrees
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            // 3. Apply the rotation to the Z-axis (adjust - 90f if your sprite points "up" instead of "right")
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
+            if (type == EnemyTypes.gunner)
+            {
+                if (timer > 3f)
+                {
+                    Shoot();
+                    timer = 0;
+                }
+            }
+            else if (type == EnemyTypes.dualGunner)
+            {
+                if (timer > 1.5f)
+                {
+                    Shoot();
+                    timer = 0;
+                }
+            }
+            else if (type == EnemyTypes.cannoneer)
+            {
+                if (timer > 6)
+                {
+                    Shoot();
+                    timer = 0;
+                }
+            }
+        }
 
+        // movement
+        if (Vector3.Distance(transform.position, player.transform.position) < viewRange)
+        {
+            // flee if gun seek if gunless
+        }
+        else
+        {
+            // pick random direction and wonder
         }
     }
-
+    
+    /// <summary>
+    /// switch sprite to costume index
+    /// </summary>
+    /// <param name="index"></param>
      void ChangeSprite(int index)
      {
         spriteRenderer.sprite = sprites[index];
 
      }
+
+    /// <summary>
+    /// shoot
+    /// </summary>
     protected override void Shoot()
     {
         print("ballsack micah laney");
     }
 
-
+    /// <summary>
+    /// collision handling with bullets
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "bullet(Clone)")
