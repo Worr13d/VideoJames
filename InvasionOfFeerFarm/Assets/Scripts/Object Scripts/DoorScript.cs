@@ -28,12 +28,12 @@ public class DoorScript : MonoBehaviour
             time = 0;
             if (scene == "Farm")
             {
-                SceneManager.LoadScene("Home", LoadSceneMode.Additive);
+                SceneManager.LoadScene("Home");
 
             }
             else
             {
-                SceneManager.LoadScene("Farm", LoadSceneMode.Additive);
+                SceneManager.LoadScene("Farm");
           
             }
         }

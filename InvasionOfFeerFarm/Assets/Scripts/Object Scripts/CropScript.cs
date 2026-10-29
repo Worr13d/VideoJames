@@ -53,6 +53,8 @@ public class CropScript : MonoBehaviour
         sprites = new Sprite[5];
 
         type = instance.currentCrop;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

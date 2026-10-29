@@ -32,7 +32,6 @@ public class Player : Entity
         // Sprite switching based on day/night cycle
         if (instance.isDay)
         {
-            print("day");
             ChangeSprite(0);
         }
         else
