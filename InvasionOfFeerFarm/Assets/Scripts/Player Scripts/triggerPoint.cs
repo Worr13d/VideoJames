@@ -123,7 +123,7 @@ public class triggerPoint : MonoBehaviour
             if (cropScript.State == CropScript.CropState.grown)
             {
                 //harvest it
-                instance.wallet += cropScript.Value;
+                instance.money += cropScript.Value;
                 Destroy(collision.gameObject.GetComponent<SpriteRenderer>());
             }
         }
@@ -213,7 +213,7 @@ public class triggerPoint : MonoBehaviour
             if (cropScript.State == CropScript.CropState.grown)
             {
                 //harvest it
-                instance.wallet += cropScript.Value;
+                instance.money += cropScript.Value;
                 Destroy(collision.gameObject.GetComponent<SpriteRenderer>());
             }
         }

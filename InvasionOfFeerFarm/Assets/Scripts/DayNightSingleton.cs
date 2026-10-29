@@ -22,8 +22,6 @@ public class DayNightSingleton : MonoBehaviour
     public UnityEvent newDay = new UnityEvent();
     public UnityEvent newNight = new UnityEvent();
 
-    //all money currently held by the player
-    public int wallet;
 
     //all the seeds currently held by the player
     public int pumpkinSeeds;
