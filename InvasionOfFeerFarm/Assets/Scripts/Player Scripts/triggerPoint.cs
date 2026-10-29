@@ -47,13 +47,21 @@ public class triggerPoint : MonoBehaviour
                             instance.pumpkinSeeds--;
                             canPlant = true;
                         }
-
-                        break;
+                        else
+                        {
+                            instance.currentCrop = Crops.bean;
+                        }
+                            break;
+                        
                     case Crops.bean:
                         if (instance.beans > 0)
                         {
                             instance.beans--;
                             canPlant = true;
+                        }
+                        else
+                        {
+                            instance.currentCrop = Crops.carrot;
                         }
 
                         break;
@@ -63,6 +71,10 @@ public class triggerPoint : MonoBehaviour
                             instance.carrotSeeds--;
                             canPlant = true;
                         }
+                        else
+                        {
+                            instance.currentCrop = Crops.potato;
+                        }
 
                         break;
                     case Crops.potato:
@@ -70,6 +82,10 @@ public class triggerPoint : MonoBehaviour
                         {
                             instance.potatoSeeds--;
                             canPlant = true;
+                        }
+                        else
+                        {
+                            instance.currentCrop = Crops.tomato;
                         }
 
                         break;
@@ -79,8 +95,12 @@ public class triggerPoint : MonoBehaviour
                             instance.tomatoSeeds--;
                             canPlant = true;
                         }
-
+                        else
+                        {
+                            instance.currentCrop = Crops.pumpkin;
+                        }
                         break;
+
                 }
 
 
