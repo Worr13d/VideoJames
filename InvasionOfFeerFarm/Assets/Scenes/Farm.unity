@@ -950,7 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118d701e28ee73d4caf1db917df732b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::moneyScript
-  text: {fileID: 0}
+  text: {fileID: 758563792}
 --- !u!1001 &802782032
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,7 +18,6 @@ public class HideDuringNight : MonoBehaviour
     {
         if (instance.isDay)
         {
-            print("dau");
             gameObject.SetActive(true);
         }
         else
