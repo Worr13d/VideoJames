@@ -54,6 +54,9 @@ public class DayNightSingleton : MonoBehaviour
         {
             Destroy(gameObject);  // Destroy duplicate
         }
+
+        DontDestroyOnLoad(gameObject);
+
     }
 
 

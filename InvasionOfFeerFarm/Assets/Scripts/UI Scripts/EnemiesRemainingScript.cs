@@ -20,7 +20,7 @@ public class EnemiesRemainingScript : MonoBehaviour
         }
         else
         {
-            text.text = "enemies remaining: " + instance.enemiesRemaining;
+            text.text = "Aliens Remaining: " + instance.enemiesRemaining;
         }
     }
 }

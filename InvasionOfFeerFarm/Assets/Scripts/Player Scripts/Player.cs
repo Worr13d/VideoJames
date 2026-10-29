@@ -15,6 +15,11 @@ public class Player : Entity
     private Vector2 velocity;
     private Vector2 position;
 
+    public float Health
+    {
+        get { return health; } set { health = value; }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +32,7 @@ public class Player : Entity
         // Sprite switching based on day/night cycle
         if (instance.isDay)
         {
+            print("day");
             ChangeSprite(0);
         }
         else
