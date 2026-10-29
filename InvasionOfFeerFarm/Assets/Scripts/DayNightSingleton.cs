@@ -32,6 +32,10 @@ public class DayNightSingleton : MonoBehaviour
     public int tomatoSeeds;
     public int beans;
 
+    public int money;
+
+    public int health;
+
     public int cycles;
     private DayNightSingleton()
     {
@@ -39,6 +43,8 @@ public class DayNightSingleton : MonoBehaviour
         enemiesRemaining = 0;
         cycles = 0;
         currentCrop = Crops.pumpkin;
+        health = 6;
+        money = 10;
 
     }
 

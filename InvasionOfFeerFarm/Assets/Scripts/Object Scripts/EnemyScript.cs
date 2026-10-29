@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -37,6 +38,7 @@ public class EnemyScript : Entity
 
 
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,28 +46,32 @@ public class EnemyScript : Entity
         instance = DayNightSingleton.instance;
         health = Random.Range(3, 7);
         hasSeenPlayer = false;
-        randomTarget = (new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10), 0));
+        //randomTarget = (new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10), 0));
+        randomTarget = (new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y+1, transform.position.y + 20), 0));
+
+        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
         switch (Random.Range(1, 5))
         {
             case 1:
                 type = EnemyTypes.gunner;
                 ChangeSprite(1);
-                viewRange = 7f + Random.Range(-1,2);
+                viewRange = 14f + Random.Range(-1,2);
                 break;
             case 2:
                 type = EnemyTypes.dualGunner; 
                 ChangeSprite(2);
-                viewRange = 5f + Random.Range(-1, 2);
+                viewRange = 11f + Random.Range(-1, 2);
                 break;
             case 3: 
                 type = EnemyTypes.charger; 
                 ChangeSprite(0);
-                viewRange = 3f + Random.Range(-1, 3);
+                viewRange = 6f + Random.Range(-1, 3);
                 break;
             case 4:
                 type = EnemyTypes.cannoneer; 
                 ChangeSprite(3);
-                viewRange = 7.5f + Random.Range(-1, 2);
+                viewRange = 15f + Random.Range(-1, 2);
 
                 break;
             default:
@@ -79,9 +85,19 @@ public class EnemyScript : Entity
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.Find("playerTest");
+
         timer += Time.deltaTime;
         // rotation and shooting
-        if (Vector3.Distance(transform.position,player.transform.position) < viewRange)
+        try
+        {
+            Vector3.Distance(transform.position, player.transform.position);
+        }
+        catch
+        {
+            Update();
+        }
+        if (Vector3.Distance(transform.position, player.transform.position) < viewRange)
         {
             Vector2 direction = (player.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -254,6 +270,7 @@ public class EnemyScript : Entity
         }
         
     }
+
 
     /// <summary>
     /// collision handling with bullets

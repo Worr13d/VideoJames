@@ -23,7 +23,7 @@ public class DoorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (time > 2f)
+        if (time > 2f && (collision.name == "playerTest" || collision.name == "playerTest2"))
         {
             time = 0;
             if (scene == "Farm")

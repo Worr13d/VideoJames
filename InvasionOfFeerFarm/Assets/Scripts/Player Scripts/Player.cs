@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
@@ -15,10 +16,8 @@ public class Player : Entity
     private Vector2 velocity;
     private Vector2 position;
 
-    public float Health
-    {
-        get { return health; } set { health = value; }
-    }
+  
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +28,7 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
+        
         // Sprite switching based on day/night cycle
         if (instance.isDay)
         {
@@ -129,5 +129,23 @@ public class Player : Entity
         instance.plantOrHarvest.Invoke();
         print("harvesting");
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "laser1(Clone)" || collision.name == "laser2(Clone)" || collision.name == "laser3(Clone)")
+        {
+            health--;
+            instance.health--;
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            if (instance.health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 }

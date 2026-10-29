@@ -19,7 +19,7 @@ public class EnemiesManagerScript : MonoBehaviour
         instance.newDay.AddListener(GoAway); // probably temporary
         transform.position = new Vector2(1000, 1000);
 
-
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -30,7 +30,11 @@ public class EnemiesManagerScript : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        transform.position = new Vector2(spawnAreaAverage.x + Random.Range(-10,10), spawnAreaAverage.y + Random.Range(-10, 10));
+        if (instance.isDay == false && this.transform.position.x == 1000f)
+        {
+            Destroy(this);
+        }
+        transform.position = new Vector2(spawnAreaAverage.x + Random.Range(-5,5), spawnAreaAverage.y + Random.Range(-5, 5));
 
         int enemies = Random.Range(5 + instance.cycles, 11 + instance.cycles);
         for (int i = 0; i < enemies; i++)

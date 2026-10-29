@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.86, y: 2.05, z: 0}
-  m_LocalScale: {x: 0.23228, y: 0.23228, z: 0.23228}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.23228}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -169,6 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c61327b68048d4db2310480bf7ec1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletScript
-  bulletSpeed: 15
+  bulletSpeed: 30
   rb: {fileID: 5784589673830182685}
-  bulletLifeSpan: 1
+  bulletLifeSpan: 3

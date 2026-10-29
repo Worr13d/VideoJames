@@ -5,7 +5,6 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] costumes;
-    [SerializeField] private Player player;
     private DayNightSingleton instance;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,33 +23,33 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         { 
-        if (player.Health == 6)
+        if (instance.health == 6)
         {
-            spriteRenderer.sprite = costumes[0];
+            spriteRenderer.sprite = costumes[6];
         }
-        else if (player.Health == 5)
-        {
-            spriteRenderer.sprite = costumes[1];
-        }
-        else if (player.Health == 4)
-        {
-            spriteRenderer.sprite = costumes[2];
-        }
-        else if (player.Health == 3)
-        {
-            spriteRenderer.sprite = costumes[3];
-        }
-        else if (player.Health == 2)
-        {
-            spriteRenderer.sprite = costumes[4];
-        }
-        else if (player.Health == 1)
+        else if (instance.health == 5)
         {
             spriteRenderer.sprite = costumes[5];
         }
-        else if (player.Health == 0)
+        else if (instance.health == 4)
         {
-            spriteRenderer.sprite = costumes[6];
+            spriteRenderer.sprite = costumes[4];
+        }
+        else if (instance.health == 3)
+        {
+            spriteRenderer.sprite = costumes[3];
+        }
+        else if (instance.health == 2)
+        {
+            spriteRenderer.sprite = costumes[2];
+        }
+        else if (instance.health == 1)
+        {
+            spriteRenderer.sprite = costumes[1];
+        }
+        else if (instance.health == 0)
+        {
+            spriteRenderer.sprite = costumes[0];
         }
         else
         {
