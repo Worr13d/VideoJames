@@ -131,6 +131,7 @@ public class Player : Entity
         
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "laser1(Clone)" || collision.name == "laser2(Clone)" || collision.name == "laser3(Clone)")

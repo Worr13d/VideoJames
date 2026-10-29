@@ -52,16 +52,15 @@ public class triggerPoint : MonoBehaviour
                             instance.currentCrop = Crops.bean;
                         }
                             break;
-                        
-                    case Crops.bean:
-                        if (instance.beans > 0)
+                    case Crops.potato:
+                        if (instance.potatoSeeds > 0)
                         {
-                            instance.beans--;
+                            instance.potatoSeeds--;
                             canPlant = true;
                         }
                         else
                         {
-                            instance.currentCrop = Crops.carrot;
+                            instance.currentCrop = Crops.tomato;
                         }
 
                         break;
@@ -77,18 +76,6 @@ public class triggerPoint : MonoBehaviour
                         }
 
                         break;
-                    case Crops.potato:
-                        if (instance.potatoSeeds > 0)
-                        {
-                            instance.potatoSeeds--;
-                            canPlant = true;
-                        }
-                        else
-                        {
-                            instance.currentCrop = Crops.tomato;
-                        }
-
-                        break;
                     case Crops.tomato:
                         if (instance.tomatoSeeds > 0)
                         {
@@ -100,6 +87,20 @@ public class triggerPoint : MonoBehaviour
                             instance.currentCrop = Crops.pumpkin;
                         }
                         break;
+                    case Crops.bean:
+                        if (instance.beans > 0)
+                        {
+                            instance.beans--;
+                            canPlant = true;
+                        }
+                        else
+                        {
+                            instance.currentCrop = Crops.carrot;
+                        }
+
+                        break;
+
+
 
                 }
 

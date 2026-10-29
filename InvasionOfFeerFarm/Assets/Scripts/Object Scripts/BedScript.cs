@@ -32,6 +32,7 @@ public class BedScript : MonoBehaviour
         {
            instance.isDay = false;
            instance.newNight.Invoke();
+          
         }
         //changes it to day
         else
@@ -41,6 +42,7 @@ public class BedScript : MonoBehaviour
                     instance.isDay = true;
                     instance.newDay.Invoke();
                     instance.cycles++;
+                    instance.health++;
                 }
             }
         }

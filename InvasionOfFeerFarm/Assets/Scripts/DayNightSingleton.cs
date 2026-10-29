@@ -16,6 +16,7 @@ public class DayNightSingleton : MonoBehaviour
     public UnityEvent plantOrHarvest = new UnityEvent();
     public UnityEvent water = new UnityEvent();
 
+
     public bool isDay = true; //true for day, false for night
     public int enemiesRemaining;
     public Crops currentCrop;
