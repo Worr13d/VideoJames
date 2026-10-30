@@ -108,26 +108,33 @@ public class triggerPoint : MonoBehaviour
                 //instantiates a crop at plotPosition
                 if (canPlant)
                 {
-                    Instantiate(cropPrefab, plotPosition, Quaternion.identity);
+                    GameObject crop = Instantiate(cropPrefab, plotPosition, Quaternion.identity);
+                    CropScript cropsScript = crop.GetComponent<CropScript>();
+
+                    cropsScript.plotReference = plotScript;
+
                     plotScript.isFilled = true;
                     canPlant = false;
                 }
 
             }
+            print("Trigger point 1 planting activated");
         }
 
-        //if colliding with a crop and it's day
-        if (collision.gameObject.TryGetComponent<CropScript>(out CropScript cropScript) && instance.isDay)
-        {
-            print("CropScript collision point 1");
-            //if the crop is grown
-            if (cropScript.State == CropScript.CropState.grown)
-            {
-                //harvest it
-                instance.money += cropScript.Value;
-                Destroy(collision.gameObject.GetComponent<SpriteRenderer>());
-            }
-        }
+        ////if colliding with a crop and it's day
+        //if (collision.gameObject.TryGetComponent<CropScript>(out CropScript cropScript) && instance.isDay)
+        //{
+            
+        //    //if the crop is grown
+        //    if (cropScript.State == CropScript.CropState.grown)
+        //    {
+        //        //harvest it
+        //        instance.money += cropScript.Value;
+        //        Destroy(collision.gameObject.GetComponent<SpriteRenderer>());
+        //        print("crop harvested");
+        //    }
+        //    print("trigger point 1 crop harvest attempt");
+        //}
 
         //turns the object back off when done
         thisObject.SetActive(false);
