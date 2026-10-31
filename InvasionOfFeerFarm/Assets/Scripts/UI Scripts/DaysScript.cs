@@ -17,12 +17,12 @@ public class DaysScript : MonoBehaviour
     {
         if (instance.isDay)
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(true);
+            text.text = "Day " + instance.cycles.ToString();
         }
         else
         {
-            gameObject.SetActive(true);
-            text.text = instance.cycles.ToString();
+            gameObject.SetActive(false);
         }
 
     }

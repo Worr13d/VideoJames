@@ -61,4 +61,16 @@ public class PurchaseItem : MonoBehaviour
             instance.beans++;
         }
         }
+    public void Heal()
+    {
+        if (instance.money >= 10 && instance.health < 6)
+        {
+
+            instance.money -= 10;
+            instance.health++;
+        }
     }
+}
+    
+
+

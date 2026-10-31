@@ -1637,6 +1637,8 @@ GameObject:
   - component: {fileID: 758563793}
   - component: {fileID: 758563792}
   - component: {fileID: 758563794}
+  - component: {fileID: 758563795}
+  - component: {fileID: 758563796}
   m_Layer: 5
   m_Name: money
   m_TagString: Untagged
@@ -1776,6 +1778,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::moneyScript
   text: {fileID: 758563792}
+--- !u!114 &758563795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758563790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c697dffa4c3096a40b4148319692b2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideDuringNight
+--- !u!114 &758563796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758563790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca35c6989e4ca94f95580a3177e8c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideInside
 --- !u!1 &773611977
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,6 +3153,8 @@ GameObject:
   - component: {fileID: 1052364676}
   - component: {fileID: 1052364675}
   - component: {fileID: 1052364677}
+  - component: {fileID: 1052364678}
+  - component: {fileID: 1052364679}
   m_Layer: 5
   m_Name: Bean text
   m_TagString: Untagged
@@ -3267,6 +3295,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeedUIScript
   typeOfSeed: bean
   text: {fileID: 1052364675}
+--- !u!114 &1052364678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052364673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c697dffa4c3096a40b4148319692b2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideDuringNight
+--- !u!114 &1052364679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052364673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca35c6989e4ca94f95580a3177e8c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideInside
 --- !u!1001 &1079736489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3624,6 +3676,8 @@ GameObject:
   - component: {fileID: 1189883062}
   - component: {fileID: 1189883061}
   - component: {fileID: 1189883063}
+  - component: {fileID: 1189883064}
+  - component: {fileID: 1189883065}
   m_Layer: 5
   m_Name: Potato TExt
   m_TagString: Untagged
@@ -3764,6 +3818,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeedUIScript
   typeOfSeed: potato
   text: {fileID: 1189883061}
+--- !u!114 &1189883064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189883059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c697dffa4c3096a40b4148319692b2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideDuringNight
+--- !u!114 &1189883065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189883059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca35c6989e4ca94f95580a3177e8c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideInside
 --- !u!1 &1231144107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,6 +3854,8 @@ GameObject:
   - component: {fileID: 1231144110}
   - component: {fileID: 1231144109}
   - component: {fileID: 1231144111}
+  - component: {fileID: 1231144112}
+  - component: {fileID: 1231144113}
   m_Layer: 5
   m_Name: Tomato Text
   m_TagString: Untagged
@@ -3916,6 +3996,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeedUIScript
   typeOfSeed: tomato
   text: {fileID: 1231144109}
+--- !u!114 &1231144112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231144107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c697dffa4c3096a40b4148319692b2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideDuringNight
+--- !u!114 &1231144113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231144107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca35c6989e4ca94f95580a3177e8c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideInside
 --- !u!1 &1234461741
 GameObject:
   m_ObjectHideFlags: 0
@@ -35560,6 +35664,8 @@ GameObject:
   - component: {fileID: 1355079217}
   - component: {fileID: 1355079216}
   - component: {fileID: 1355079218}
+  - component: {fileID: 1355079219}
+  - component: {fileID: 1355079220}
   m_Layer: 5
   m_Name: Carrot Text
   m_TagString: Untagged
@@ -35700,6 +35806,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeedUIScript
   typeOfSeed: carrot
   text: {fileID: 1355079216}
+--- !u!114 &1355079219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355079214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c697dffa4c3096a40b4148319692b2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideDuringNight
+--- !u!114 &1355079220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355079214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca35c6989e4ca94f95580a3177e8c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideInside
 --- !u!1 &1395771640
 GameObject:
   m_ObjectHideFlags: 0
@@ -40012,6 +40142,8 @@ GameObject:
   - component: {fileID: 1843644544}
   - component: {fileID: 1843644543}
   - component: {fileID: 1843644545}
+  - component: {fileID: 1843644546}
+  - component: {fileID: 1843644547}
   m_Layer: 5
   m_Name: Pumokin Text
   m_TagString: Untagged
@@ -40152,6 +40284,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeedUIScript
   typeOfSeed: pumpkin
   text: {fileID: 1843644543}
+--- !u!114 &1843644546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843644541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c697dffa4c3096a40b4148319692b2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideDuringNight
+--- !u!114 &1843644547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843644541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca35c6989e4ca94f95580a3177e8c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideInside
 --- !u!1 &1877378095
 GameObject:
   m_ObjectHideFlags: 0

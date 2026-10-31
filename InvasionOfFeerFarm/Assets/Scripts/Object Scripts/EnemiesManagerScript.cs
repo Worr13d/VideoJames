@@ -1,3 +1,4 @@
+using Unity.Burst;
 using UnityEngine;
 
 public class EnemiesManagerScript : MonoBehaviour
@@ -7,7 +8,7 @@ public class EnemiesManagerScript : MonoBehaviour
     private DayNightSingleton instance;
     [SerializeField] private GameObject enemy;
     [SerializeField] private Vector2 spawnAreaAverage;
-
+    private bool hasBeenThroughNight;
 
 
 
@@ -25,14 +26,15 @@ public class EnemiesManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void SpawnEnemies()
     {
+
         if (instance.isDay == false && this.transform.position.x == 1000f)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         transform.position = new Vector2(spawnAreaAverage.x + Random.Range(-5,5), spawnAreaAverage.y + Random.Range(-5, 5));
 
@@ -46,6 +48,7 @@ public class EnemiesManagerScript : MonoBehaviour
 
     private void GoAway()
     {
+        gameObject.SetActive(false);
         transform.position = new Vector2(1000, 1000);
     }
 }
