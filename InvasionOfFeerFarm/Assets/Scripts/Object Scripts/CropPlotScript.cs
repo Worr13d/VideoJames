@@ -7,7 +7,7 @@ public class CropPlotScript : MonoBehaviour
     DayNightSingleton instance;
 
     //watered state
-    [SerializeField] private bool isWatered;
+    [SerializeField] public bool isWatered = false;
 
     //unwatered and watered sprite
     [SerializeField] private Sprite unwatered;
@@ -19,7 +19,7 @@ public class CropPlotScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
 
         instance = DayNightSingleton.instance;
 
@@ -52,5 +52,6 @@ public class CropPlotScript : MonoBehaviour
     public void SwitchWatered()
     {
         bigRender.sprite = watered;
+        isWatered = true;
     }
 }

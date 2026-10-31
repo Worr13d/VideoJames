@@ -64,7 +64,31 @@ public class DayNightSingleton : MonoBehaviour
 
     }
 
+    //switch events for buttons
+    public void SwitchToPUMPKIN()
+    {
+        currentCrop = Crops.pumpkin;
+    }
 
+    public void SwitchToPotato()
+    {
+        currentCrop = Crops.potato;
+    }
+
+    public void SwitchToCarrot()
+    {
+        currentCrop = Crops.carrot;
+    }
+
+    public void SwitchToTomato()
+    {
+        currentCrop = Crops.tomato;
+    }
+
+    public void SwitchToBean()
+    {
+        currentCrop = Crops.bean;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

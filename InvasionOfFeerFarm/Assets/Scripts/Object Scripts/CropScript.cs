@@ -24,6 +24,9 @@ public class CropScript : MonoBehaviour
     private Sprite[] spriteSheet;
     private Sprite[] sprites;
 
+    //reference to the plot
+    [SerializeField] public CropPlotScript plotReference;
+
     //singleton
     DayNightSingleton instance;
 
@@ -54,6 +57,8 @@ public class CropScript : MonoBehaviour
 
         type = instance.currentCrop;
 
+        instance.newDay.AddListener(UpdateState);
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -69,7 +74,7 @@ public class CropScript : MonoBehaviour
                 {
                     sprites[i] = spriteSheet[i];
                 }
-                value = 20;
+                value = 3;
                 break;
             case Crops.potato:
                 for (int i = 5; i < 10; i++)
@@ -83,21 +88,21 @@ public class CropScript : MonoBehaviour
                 {
                     sprites[i - 10] = spriteSheet[i];
                 }
-                value = 8;
+                value = 12;
                 break;
             case Crops.tomato:
                 for (int i = 15; i < 20; i++)
                 {
                     sprites[i - 15] = spriteSheet[i];
                 }
-                value = 12;
+                value = 25;
                 break;
             case Crops.bean:
                 for (int i = 20; i < 25; i++)
                 {
                     sprites[i - 20] = spriteSheet[i];
                 }
-                value = 10;
+                value = 75;
                 break;
             default:
                 break;
@@ -124,6 +129,19 @@ public class CropScript : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    
+
+    public void UpdateState()
+    {
+        if(state != CropState.grown && plotReference.isWatered)
+        {
+            plotReference.isWatered = false;
+            state = (CropState)((int)state + 1);
+            print("updateState success");
+        }
+        
     }
 
 }
